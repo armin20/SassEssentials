@@ -1,0 +1,21 @@
+{
+  "name": "sassessentials",
+  "version": "1.0.2",
+  "description": "A website for my Sass Essential Training course on Lynda.com",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Armin Sharifiyan",
+  "dependencies": {
+    "browser-sync": "^2.27.7",
+    "gulp": "^4.0.2",
+    "gulp-jshint": "^2.1.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "node-sass": "^7.0.1"
+  },
+  "devDependencies": {
+    "sass": "^1.49.7"
+  }
+}

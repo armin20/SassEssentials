@@ -1,0 +1,89 @@
+$color-btn-text: $color-backgrounds;
+// $color-btn-default: $color-main;
+// $color-btn-hot: $red;
+// $color-btn-cool: $blue;
+// $color-btn-awesome: $yellow;
+$roundness: 20px 0 20px 0;
+//invisible class by using %
+%btn {
+  display: inline-block;
+  padding: 6px 12px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-family: $font-highlight;
+  user-select: none;
+  color: $color-btn-text;
+}
+
+// $color-btn-names: "default", "hot", "cool";
+// $color-btn-values: $color-main, $red, $blue;
+
+//use map data type (associate arrays)
+$color-btn: (
+  default: $color-main,
+  hot: $red,
+  cool: $blue,
+  awesome: $purple,
+);
+
+// @each $name in $color-btn-names {
+//   $i: index($color-btn-names, $name);
+
+//   .btn-#{$name} {
+//     @extend %btn;
+//     background-color: nth($color-btn-values, $i);
+//   }
+// }
+
+@each $key, $value in $color-btn {
+  .btn-#{$key} {
+    @extend %btn;
+    background-color: $value;
+  }
+}
+
+// .btn-default {
+//   @extend %btn;
+//   background: $color-btn-default;
+// }
+
+// .btn-cool {
+//   @extend %btn;
+//   background: $color-btn-cool;
+// }
+
+// .btn-hot {
+//   @extend %btn;
+//   background: $color-btn-hot;
+// }
+
+// .btn-awesome {
+//   @extend %btn;
+//   background: $color-btn-awesome;
+// }
+
+.grid {
+  @include clearfix;
+  .item {
+    float: left;
+    @include imagegrid(5, 2%);
+  }
+  img {
+    display: block;
+
+    /*!
+    nth() we can use which of the border
+    that we have set on top of the file, used 1 means
+    it only reads the roundness variable but the first number 20px
+
+    In Sass, lists are not zero index 1 means the first 2 means second element
+    */
+
+    border-radius: nth($roundness, 1);
+    max-width: 100%;
+  }
+}

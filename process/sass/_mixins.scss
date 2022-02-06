@@ -1,0 +1,51 @@
+@mixin backImage($image, $height, $bgpos: center center) {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url($image);
+  background-repeat: no-repeat;
+  background-position: $bgpos; //center within the layout
+  background-size: cover;
+  height: $height;
+}
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin imagegrid($qty, $margin) {
+  width: (
+    (100% - (($qty - 1) * $margin)) / $qty
+  ); //proper width of the element when maring is only inside the element
+  &:nth-child(n) {
+    margin-right: $margin;
+    margin-bottom: $margin;
+  } //allows to grab specific element
+
+  // # allows to insert variable here
+  &:nth-child(#{$qty}n) {
+    //it is essentially the last element in the group
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+//for small screens
+@mixin break($args...) {
+  @if length($args) == 1 {
+    @media (min-width: nth($args, 1)) {
+      // nth($args, 1) select the first elements
+      @content; // allow to pass mixin like some css that we want to be inside this media query
+    }
+  } @else {
+    @media (min-width: nth($args, 1)) and (max-width: nth($args, 2)) {
+      // nth($args, 1) select the first elements
+      @content; // allow to pass mixin like some css that we want to be inside this media query
+    }
+  }
+}

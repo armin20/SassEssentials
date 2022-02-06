@@ -1,0 +1,51 @@
+$color-item-border: $red;
+$color-media-head: $blue;
+
+.media {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .item {
+    padding-bottom: 20px;
+    border-top: 1px dotted $color-item-border;
+    padding-top: 10px;
+    padding-left: 10px;
+    &:hover {
+      background: $yellow;
+      border-radius: 10px;
+      padding: 20px;
+      border-top: 1px dotted $color-item-border;
+    }
+    &:last-of-type {
+      border-bottom: 1px dotted $color-item-border;
+    }
+    @include clearfix;
+  }
+
+  .head {
+    margin: 0;
+    padding: 0;
+    color: $color-media-head;
+    font-size: 2rem;
+
+    //if there is head section and inside the typography and head element
+    #typography & {
+      color: $red;
+    }
+  }
+
+  p {
+    margin: 0;
+    font: 1rem;
+  }
+
+  img {
+    float: left;
+    margin-right: 10px;
+  }
+  a {
+    text-decoration: none;
+    color: $color-main;
+  }
+}
